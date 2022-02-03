@@ -4040,7 +4040,7 @@ bool StorageReplicatedMergeTree::fetchExistsPart(const String & part_name, const
 void StorageReplicatedMergeTree::startup()
 {
     /// Do not start replication if ZooKeeper is not configured or there is no metadata in zookeeper
-    if (!has_metadata_in_zookeeper.has_value() || *has_metadata_in_zookeeper == false)
+    if (!has_metadata_in_zookeeper.has_value() || !*has_metadata_in_zookeeper)
         return;
 
     try
